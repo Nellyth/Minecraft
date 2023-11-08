@@ -1,0 +1,29 @@
+
+["YetAnotherWorldProtector mod server configuration"]
+	#Permission for command blocks to execute mod commands
+	command_block_execution = false
+	#Default command alternative used in quick commands in chat.
+	#This is only important if another mod uses the /wp command (like Journey Map). Defaults to 0.
+	# 0 -> /wp
+	# 1 -> /yawp
+	#Range: 0 ~ 1
+	wp_root_command = 0
+	#Minimum OP level to use mod commands.
+	# 0 -> everyone can use the commands.
+	# 1-4 -> OP with specific level can use the commands.
+	# 5 -> no operator can use the commands.
+	# Defaults to 5.
+	#Range: 0 ~ 5
+	command_op_level = 4
+	#Defines whether info commands for regions can be used by every player.
+	allow_info_cmds = true
+	#Defines whether teleport in and out of regions is allowed without permission.
+	# This may need to be enable for mods like Waystones to work properly.
+	# true -> allow teleport
+	# false -> disallow teleport.
+	allow_region_teleport = true
+	#Player UUIDs with permission to use mod commands.
+	# Make sure to put the UUIDs in parentheses, just like a normal string.
+	# Example: players_with_permission = ["614c9eac-11c9-3ca6-b697-938355fa8235", "b9f5e998-520a-3fa2-8208-0c20f22aa20f"]
+	players_with_permission = ["bdb489ba-1576-3515-bc9d-b40cfaab0310"]
+
