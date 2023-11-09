@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# Obtiene la ubicación actual del archivo de script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # Construye la ruta completa a la carpeta de clonación de Git
-WORK_DIR="$SCRIPT_DIR"
+WORK_DIR="$(pwd)"
 
 # Verificar si existe la carpeta "MinecraftData"
 if [ ! -d "$WORK_DIR" ]; then
@@ -13,7 +10,7 @@ if [ ! -d "$WORK_DIR" ]; then
 fi
 
 # Moverse a la carpeta del repositorio clonado
-cd "$WORK_DIR"
+cd $WORK_DIR
 
 # Dar la opción de hacer "push" o "pull"
 echo "Seleccione una opción:"
@@ -21,11 +18,7 @@ echo "1. Hacer 'push' al repositorio"
 echo "2. Hacer 'pull' desde el repositorio"
 read -p "Opción (1/2): " option
 
-pkill -f javaw.exe
-
-if [ "$option" -eq 1 ]; then
-    rm -f "$WORK_DIR/TLauncher.exe"
-    
+if [ "$option" -eq 1 ]; then  
     # Realizar "push" al repositorio
     git checkout -b test
     git pull test
@@ -39,27 +32,26 @@ elif [ "$option" -eq 2 ]; then
     git checkout main
     git pull
 
-    # Realizar "pull" desde el repositorio
-    git checkout main
-    git pull
+    # Lee todas las líneas del archivo "server.config" en una matriz
+    readarray -t server_lines < "$WORK_DIR/server.config"
 
-    while IFS= read -r server; do
-        SERVER="$server"
-    done < "server.config"
-
-    if [ ! -d "$SERVER" ]; then
-        echo "No se encuentra la carpeta de Minecraft del Servidor."
-    else
-        rm -rf "$SERVER/mods"
-        rm -rf "$SERVER/CustomSkinLoader"
-
-        cp -r "$WORK_DIR/mods" "$SERVER/mods"
-        cp -r "$WORK_DIR/CustomSkinLoader" "$SERVER/CustomSkinLoader"
-        cp -r "$WORK_DIR/server.properties" "$SERVER/server.properties"
-        cp -r "$WORK_DIR/server-icon.png" "$SERVER/server-icon.png"
-        cp -r "$WORK_DIR/world" "$SERVER/world"
-        cp -r "$WORK_DIR/config" "$SERVER/config"
-    fi
+    # Itera a través de las líneas almacenadas en la matriz
+    for server in "${server_lines[@]}"; do
+        # Haces lo que necesites con cada línea, por ejemplo:
+    if [ ! -d "$server" ]; then
+            echo "No se encuentra la carpeta de Minecraft del Servidor."
+        else
+            rm -rf "$WORK_DIR/mods"
+            
+            cp -r "$WORK_DIR/mods" "$server/mods"
+            cp -r "$WORK_DIR/CustomSkinLoader" "$server/CustomSkinLoader"
+            cp -r "$WORK_DIR/server.properties" "$server/server.properties"
+            cp -r "$WORK_DIR/server-icon.png" "$server/server-icon.png"
+            cp -r "$WORK_DIR/world" "$server/world"
+            cp -r "$WORK_DIR/config" "$server/config"
+            sudo chmod 777 -R $server
+       fi
+    done
 else
     echo "Opción no válida. Saliendo."
 fi
