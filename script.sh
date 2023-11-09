@@ -41,7 +41,7 @@ elif [ "$option" -eq 2 ]; then
     if [ ! -d "$server" ]; then
             echo "No se encuentra la carpeta de Minecraft del Servidor."
         else
-            rm -rf "$WORK_DIR/mods"
+            rm -rf "$server/mods"
             
             cp -r "$WORK_DIR/mods" "$server/mods"
             cp -r "$WORK_DIR/CustomSkinLoader" "$server/CustomSkinLoader"
