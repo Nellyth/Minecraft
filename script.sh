@@ -23,12 +23,12 @@ for server in "${server_lines[@]}"; do
 	else
 		rm -rf "$server/mods"
 		
-		cp -r "$WORK_DIR/mods" "$server/mods"
-		cp -r "$WORK_DIR/CustomSkinLoader" "$server/CustomSkinLoader"
-		cp -r "$WORK_DIR/server.properties" "$server/server.properties"
-		cp -r "$WORK_DIR/server-icon.png" "$server/server-icon.png"
-		cp -r "$WORK_DIR/world" "$server/world"
-		cp -r "$WORK_DIR/config" "$server/config"
+		cp -ru "$WORK_DIR/mods" "$server/mods"
+		cp -ru "$WORK_DIR/CustomSkinLoader" "$server/CustomSkinLoader"
+		cp -ru "$WORK_DIR/server.properties" "$server/server.properties"
+		cp -ru "$WORK_DIR/server-icon.png" "$server/server-icon.png"
+		cp -ru "$WORK_DIR/world" "$server/world"
+		cp -ru "$WORK_DIR/config" "$server/config"
 		sudo chmod 777 -R $server
    fi
 done
