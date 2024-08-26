@@ -1,6 +1,8 @@
 {
 	"folders": [
 		"mods", 
-		"CustomSkinLoader"
+		"CustomSkinLoader",
+		"world",
+		"config"
 	]
 }

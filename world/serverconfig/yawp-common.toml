@@ -25,5 +25,5 @@
 	#Player UUIDs with permission to use mod commands.
 	# Make sure to put the UUIDs in parentheses, just like a normal string.
 	# Example: players_with_permission = ["614c9eac-11c9-3ca6-b697-938355fa8235", "b9f5e998-520a-3fa2-8208-0c20f22aa20f"]
-	players_with_permission = ["bdb489ba-1576-3515-bc9d-b40cfaab0310"]
+	players_with_permission = ["bdb489ba-1576-3515-bc9d-b40cfaab0310", "9b60a229-cefc-3097-8785-2af4931d7fcc"]
 
