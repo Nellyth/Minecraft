@@ -3,6 +3,7 @@
 		"mods", 
 		"CustomSkinLoader",
 		"world",
-		"config"
+		"config",
+		"shaderpacks"
 	]
 }
